@@ -1,9 +1,24 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, HyperlinkedModelSerializer
 
-from .models import Name
+from .models import Name, Biography, What_is_famous
 
 
 class NameModelSerializer(ModelSerializer):
     class Meta:
         model = Name
+        fields = '__all__'
+        # fields = ('first_name', 'last_name') выводит нужные колич полей
+        # exclude = ('first_name' ) нужное поле исключить ,остальные выведи
+
+
+class BiographyModelSerializer(HyperlinkedModelSerializer):
+    # name = NameModelSerializer()
+    class Meta:
+        model = Biography
+        fields = '__all__'
+
+
+class What_is_famousModelSerializer(ModelSerializer):
+    class Meta:
+        model = What_is_famous
         fields = '__all__'

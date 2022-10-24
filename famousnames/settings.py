@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
+    # app
     'names',
-    'corsheaders'
+    'projectapp'
 ]
 
 MIDDLEWARE = [
@@ -123,12 +125,25 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+# AUTH_USER_MODEL = 'names.Name'
+# DEFAULT_AUTO_FIELD = 'django.db.models.Autofield'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-RES_FRAMEWORK = {
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer'
-    ]
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
 
+    ],
+    # pip install djangorestframework-camel-case
+    # 'DEFAULT_RENDERER_CLASSES': (
+    #     'djangorestframework-camel-case.render.CamelCaseJSONRenderer',
+    #     'djangorestframework-camel-case.render.CamelCaseBrowsableAPIRenderer',
+    # ),
+    # 'DEFAULT_PARSER_CLASSES': (
+    #     'djangorestframework-camel-case.parser.CamelCaseJSONParser',
+    #     'djangorestframework-camel-case.parser.CamelCaseMultiPartParser',
+    #     'djangorestframework-camel-case.parser.CamelCaseJSONParser',
+    #
+    # ),
 }

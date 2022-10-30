@@ -1,3 +1,4 @@
+from rest_framework import mixins, viewsets
 from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer
 from rest_framework.viewsets import ModelViewSet
 from .models import Name, Biography, What_is_famous
@@ -5,6 +6,12 @@ from .serializers import NameModelSerializer, BiographyModelSerializer, What_is_
 
 
 # Create your views here.
+# class NameModelViewSet(mixins.ListModelMixin,
+#                        mixins.RetrieveModelMixin,
+#                        mixins.UpdateModelMixin,
+#                        viewsets.GenericViewSet):
+#     queryset = Name.objects.all()
+#     serializer_class = NameModelSerializer
 
 class NameModelViewSet(ModelViewSet):
     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]

@@ -18,6 +18,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from names.views import NameModelViewSet, What_is_famousModelViewSet, BiographyModelViewSet
+from projectapp.views import ProjectViewSet, ToDoViewSet
 
 # from projectapp.views import ProjectViewSet, ToDoViewSet
 
@@ -26,7 +27,7 @@ router.register('names', NameModelViewSet)
 router.register('What_is_famous', What_is_famousModelViewSet)
 router.register('Biography', BiographyModelViewSet)
 
-# router.register('projects', ProjectViewSet)
+router.register('projects', ProjectViewSet)
 # router.register('todos', ToDoViewSet)
 
 

@@ -44,12 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # other
     'rest_framework',
     'corsheaders',
     'django_filters',
     'rest_framework.authtoken',
     'drf_yasg',
-    # 'graphene_django',
+    'graphene_django',
     # app
     'names',
     'projectapp',
@@ -173,4 +174,8 @@ REST_FRAMEWORK = {
 
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     # 'PAGE_SIZE': 100
+}
+
+GRAPHENE = {
+    'SCHEMA': 'famousnames.schema.schema'
 }

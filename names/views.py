@@ -1,8 +1,12 @@
 from rest_framework.permissions import BasePermission
 from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.views import APIView
+
+from user.serializers import NameModelSerialiser
 from .models import Name, Biography, What_is_famous
-from .serializers import NameModelSerializer, BiographyModelSerializer, What_is_famousModelSerializer
+from .serializers import NameModelSerializer, BiographyModelSerializer, What_is_famousModelSerializer, \
+    NameBasedModelSerialiser
 
 
 # Create your views here.
@@ -20,10 +24,15 @@ class StaffOnly(BasePermission):
 
 
 class NameModelViewSet(ModelViewSet):
-    renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
+    # renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
     queryset = Name.objects.all()
-    serializer_class = NameModelSerializer
-    permission_classes = [StaffOnly]
+
+    # serializer_class = NameModelSerializer
+    # permission_classes = [IsAdminUser]
+    def get_serializer_class(self):
+        if self.request.version == 'v2':
+            return NameBasedModelSerialiser
+        return NameModelSerialiser
 
 
 class BiographyModelViewSet(ModelViewSet):

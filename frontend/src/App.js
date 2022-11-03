@@ -4,8 +4,8 @@ import logo from './logo.svg';
 
 import './bootstrap/css/bootstrap.min.css'
 import './bootstrap/css/sticky-footer-navbar.css'
-// import Footer from './components/Footer';
-// import Navbar from './components/Menu';
+import Footer from './components/Footer';
+import Navbar from './components/Menu';
 import './App.css';
 import NameList from './components/Name.js';
 import What_is_famousList from './components/What_is_famous.js';
@@ -14,21 +14,25 @@ import LoginForm from "./components/Auth.js";
 import Cookies from "universal-cookie";
 import {HashRouter, Route, BrowserRouter, Link, Switch, Redirect} from "react-router-dom";
 
-
 /* eslint-disable max-len */
-// const DOMAIN = 'http://127.0.0.1:8000/api/'
-// const get_url = (url) => `${DOMAIN}${url}`
+const DOMAIN = 'http://127.0.0.1:8000/api/'
+const get_url = (url) => `${DOMAIN}${url}`
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            // navbarItems: [
-            //     {name: 'Names', href: '/'},
-            //
-            'names': [],
-            'What_is_famous': [],
-            'token': '',
+            navbarItems: [
+                {name: 'Names', href: '/'},
+                {name: 'Projects', href: '/projects'},
+                {name: 'TODOs', href: '/todos'},
+            ],
+            names: [],
+            What_is_famous: [],
+            token: '',
+            project: {},
+            projects: [],
+            auth: {username: '', is_login: false}
 
         };
     }

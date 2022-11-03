@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-b1l0t6xs#4!w*h&w4&=ted*=3fkfm@_0^24o1u!@**dpu0cvr&
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
@@ -35,7 +36,7 @@ CORS_ALLOWED_ORIGINS = [
 
 # Application definition
 
-rest_framework = 'rest_framework'
+# rest_framework = 'rest_framework'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,9 +48,12 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     'rest_framework.authtoken',
+    'drf_yasg',
+    # 'graphene_django',
     # app
     'names',
-    'projectapp'
+    'projectapp',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -131,7 +135,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 # AUTH_USER_MODEL = 'names.Name'
 # DEFAULT_AUTO_FIELD = 'django.db.models.Autofield'
-from rest_framework.permissions import IsAdminUser
+# from rest_framework.permissions import IsAdminUser
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
@@ -148,8 +153,11 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         # 'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
+    # 'DEFAULT_VERSIONING_CLASS':'rest_framework.versioning.URLPathVersioning',
+    # 'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.QueryParameterVersioning',
 
-    #
+    # -
     # ],
     # pip install djangorestframework-camel-case
     # 'DEFAULT_RENDERER_CLASSES': (

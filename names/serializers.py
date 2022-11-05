@@ -25,7 +25,7 @@ class BiographyModelSerializer(HyperlinkedModelSerializer):
         fields = '__all__'
 
 
-class What_is_famousModelSerializer(ModelSerializer):
+class What_is_famousModelSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = What_is_famous
         fields = '__all__'

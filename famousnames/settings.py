@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-b1l0t6xs#4!w*h&w4&=ted*=3fkfm@_0^24o1u!@**dpu0cvr&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
@@ -91,11 +91,21 @@ WSGI_APPLICATION = 'famousnames.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'db',
+        'PASSWORD': '1',
+        'USER': 'nikola',
+        'HOST': 'db',
+        'PORT': '5432'
     }
 }
 
@@ -132,7 +142,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = (BASE_DIR / 'frontend/build/static/',)
+STATICFILES_DIRS = (BASE_DIR / '../../frontend/build/static/',)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

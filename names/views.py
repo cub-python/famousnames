@@ -1,4 +1,4 @@
-from rest_framework import mixins, viewsets
+from rest_framework.permissions import BasePermission
 from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer
 from rest_framework.viewsets import ModelViewSet
 from .models import Name, Biography, What_is_famous
@@ -13,10 +13,17 @@ from .serializers import NameModelSerializer, BiographyModelSerializer, What_is_
 #     queryset = Name.objects.all()
 #     serializer_class = NameModelSerializer
 
+
+class StaffOnly(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.is_staff
+
+
 class NameModelViewSet(ModelViewSet):
     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
     queryset = Name.objects.all()
     serializer_class = NameModelSerializer
+    permission_classes = [StaffOnly]
 
 
 class BiographyModelViewSet(ModelViewSet):

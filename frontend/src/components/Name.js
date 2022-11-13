@@ -1,9 +1,12 @@
 import React from "react";
+import {Link,} from "react-router-dom";
 
 const NameItem = ({name}) => {
     return (
         <tr>
-            <td>{name.first_name}</td>
+            <td>
+                <Link to={'/name/${name.id}'}>{name.first_name}</Link>
+            </td>
             <td>{name.last_name}</td>
             <td>{name.birthday_year}</td>
             <td>{name.place_of_birth}</td>

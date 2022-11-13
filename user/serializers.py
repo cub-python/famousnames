@@ -7,7 +7,7 @@ from names.models import Name
 class NameModelSerialiser(ModelSerializer):
     class Meta:
         model = Name
-        fields = ('username', 'place_of_birth')
+        fields = ('first_name','last_name', 'place_of_birth')
         # fields = ('first_name', 'last_name') выводит нужные колич полей
         # exclude = ('first_name' ) нужное поле исключить ,остальные выведи
 

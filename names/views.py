@@ -1,11 +1,9 @@
 from rest_framework.permissions import BasePermission
-from rest_framework.renderers import BrowsableAPIRenderer, JSONRenderer
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.views import APIView
 
 from user.serializers import NameModelSerialiser
 from .models import Name, Biography, What_is_famous
-from .serializers import NameModelSerializer, BiographyModelSerializer, What_is_famousModelSerializer, \
+from .serializers import BiographyModelSerializer, What_is_famousModelSerializer, \
     NameBasedModelSerialiser
 
 
@@ -20,7 +18,7 @@ from .serializers import NameModelSerializer, BiographyModelSerializer, What_is_
 
 class StaffOnly(BasePermission):
     def has_permission(self, request, view):
-        return request.user.is_staff
+        return request.name.is_staff
 
 
 class NameModelViewSet(ModelViewSet):

@@ -6,7 +6,7 @@ from .models import Name, Biography, What_is_famous
 class NameModelSerializer(ModelSerializer):
     class Meta:
         model = Name
-        fields = '__all__'
+        fields = ('first_name', 'last_name', 'birthday_year', 'place_of_birth')
         # fields = ('first_name', 'last_name') выводит нужные колич полей
         # exclude = ('first_name' ) нужное поле исключить ,остальные выведи
 

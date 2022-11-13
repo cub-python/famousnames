@@ -29,11 +29,13 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
     'http://localhost:3001',
+    'http://localhost:3002',
 
 ]
 
 # Application definition
 
+rest_framework = 'rest_framework'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'django_filters',
     # app
     'names',
     'projectapp'
@@ -131,10 +134,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-
-    ],
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    #
+    # ],
     # pip install djangorestframework-camel-case
     # 'DEFAULT_RENDERER_CLASSES': (
     #     'djangorestframework-camel-case.render.CamelCaseJSONRenderer',
@@ -146,4 +149,7 @@ REST_FRAMEWORK = {
     #     'djangorestframework-camel-case.parser.CamelCaseJSONParser',
     #
     # ),
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE': 100
 }

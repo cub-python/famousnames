@@ -2,7 +2,7 @@ import graphene
 from graphene import ObjectType
 from graphene_django import DjangoObjectType
 
-from names.models import Name, What_is_famous
+from doers.models import Name, What_is_famous
 
 
 # level 1
@@ -17,7 +17,7 @@ from names.models import Name, What_is_famous
 #         fields = '__all__'
 #
 # class Query(ObjectType):
-#     names = graphene.List(NameType)
+#     doers = graphene.List(NameType)
 #     def resolve_names(root,info):
 #         return Name.objects.all()
 #
@@ -35,7 +35,7 @@ from names.models import Name, What_is_famous
 #         fields = '__all__'
 #
 # class Query(ObjectType):
-#     names = graphene.List(NameType)
+#     doers = graphene.List(NameType)
 #     What_is_famous = graphene.List(What_is_famousType)
 #
 #     def resolve_names(root, info):

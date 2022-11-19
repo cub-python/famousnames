@@ -2,8 +2,7 @@ from django.db import models
 
 
 # Create your models here
-class Name(models.Model):
-    username = models.CharField(max_length=64)
+class Doer(models.Model):
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
     birthday_year = models.PositiveBigIntegerField()
@@ -15,9 +14,9 @@ class Name(models.Model):
 
 class Biography(models.Model):
     text = models.TextField(null=True, blank=True)
-    names = models.OneToOneField(Name, on_delete=models.CASCADE)
+    doer = models.OneToOneField(Doer, on_delete=models.CASCADE)
 
 
-class What_is_famous(models.Model):
+class Success(models.Model):
     name = models.TextField(max_length=64)
-    names = models.ManyToManyField(Name)
+    doers = models.ManyToManyField(Doer)

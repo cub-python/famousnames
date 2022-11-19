@@ -9,18 +9,18 @@ from rest_framework.viewsets import ModelViewSet, ViewSet, GenericViewSet
 # from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView, \
 #     get_object_or_404
 
-# from names.filters import What_is_famousFilter
-from names.models import What_is_famous
-from names.serializers import What_is_famousModelSerializer
+# from doers.filters import What_is_famousFilter
+from doers.models import Success
+from doers.serializers import SuccessModelSerializer
 
 
 # # #PAGINATOR
-class What_is_famousLimitOffsetPagination(LimitOffsetPagination):
+class SuccessLimitOffsetPagination(LimitOffsetPagination):
     default_limit = 3
 
 
 # # # #
-class What_is_famousLimitOffsetPaginatonViewSet(ModelViewSet):
-    queryset = What_is_famous.objects.all()
-    serializer_class = What_is_famousModelSerializer
-    pagination_class = What_is_famousLimitOffsetPagination
+class SuccessLimitOffsetPaginationViewSet(ModelViewSet):
+    queryset = Success.objects.all()
+    serializer_class = SuccessModelSerializer
+    pagination_class = SuccessLimitOffsetPagination

@@ -21,14 +21,19 @@ from graphene_django.views import GraphQLView
 
 from rest_framework import permissions
 from rest_framework.authtoken.views import obtain_auth_token
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import DefaultRouter,SimpleRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from drf_yasg.views import get_schema_view
-from names.views import NameModelViewSet, What_is_famousModelViewSet, BiographyModelViewSet
-from projectapp.views import ProjectViewSet, ToDoViewSet
-from user.views import NameListAPIView
+from doers.views import DoerModelViewSet, SuccessModelViewSet, BiographyModelViewSet
+from projectapp.views import ProjectViewSet
 
-# from projectapp.views import ProjectViewSet, ToDoViewSet
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView
+)
+from user.views import UserListAPIView
+
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -43,8 +48,8 @@ schema_view = get_schema_view(
 )
 
 router = DefaultRouter()
-router.register('names', NameModelViewSet)
-router.register('What_is_famous', What_is_famousModelViewSet)
+router.register('doers', DoerModelViewSet)
+router.register('successes', SuccessModelViewSet)
 router.register('Biography', BiographyModelViewSet)
 
 router.register('projects', ProjectViewSet)
@@ -69,6 +74,6 @@ urlpatterns = [
 
     path('graphql/', GraphQLView.as_view(graphiql=True)),
     path('', TemplateView.as_view(template_name='index.html')),
-    # path('graphql/', GraphQLView.as_view(graphiql=True)),
+    path('graphql/', GraphQLView.as_view(graphiql=True)),
 
 ]

@@ -52,9 +52,9 @@ INSTALLED_APPS = [
     'drf_yasg',
     'graphene_django',
     # app
-    'names',
+    'doers',
     'projectapp',
-    'user'
+    # 'user'
 ]
 
 MIDDLEWARE = [
@@ -73,8 +73,8 @@ ROOT_URLCONF = 'famousnames.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': []
-        'DIRS': [BASE_DIR / 'frontend/build'],
+        # 'DIRS': [],
+        'DIRS': [BASE_DIR / '../../frontend/build'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'famousnames.wsgi.application'
 # }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'db',
         'PASSWORD': '1',
         'USER': 'nikola',
@@ -146,7 +146,7 @@ STATICFILES_DIRS = (BASE_DIR / '../../frontend/build/static/',)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-# AUTH_USER_MODEL = 'names.Name'
+# AUTH_USER_MODEL = 'doers.Name'
 # DEFAULT_AUTO_FIELD = 'django.db.models.Autofield'
 # from rest_framework.permissions import IsAdminUser
 
